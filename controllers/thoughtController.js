@@ -108,13 +108,13 @@ module.exports = {
           .catch((err) => res.json(err));
       },
     
-      deleteReaction(req, res) {
+    deleteReaction(req, res) {
         Thought.findOneAndUpdate(
-          { _id: req.params.thoughtId },
-          { $pull: { reactions: { reactionId: req.params.reactionId } } },
-          { new: true }
+            { _id: req.params.thoughtId },
+            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            { new: true }
         )
-          .then((dbThoughtData) => res.json(dbThoughtData))
-          .catch((err) => res.json(err));
-      }
+        .then((dbThoughtData) => res.json(dbThoughtData))
+        .catch((err) => res.json(err));
+    }
 }
