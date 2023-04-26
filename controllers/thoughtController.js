@@ -77,7 +77,7 @@ module.exports = {
                 if (!dbThoughtData) {
                     return res.status(404).json({ message: 'No thought found with this id!' });
                 }
-                res.json(dbThoughtData);
+                res.json({ message: "Thought has been successfully updated", dbThoughtData });
             })
             .catch(err => {
                 console.log(err);

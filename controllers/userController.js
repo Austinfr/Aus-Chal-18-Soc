@@ -43,10 +43,10 @@ module.exports = {
             });
     },
 
-    //creates a user based on the request body and returns the created user
+    //creates a user based on the request body and returns a success or failure
     createUser(req, res) {
         User.create(req.body)
-            .then(dbUserData => res.json(dbUserData))
+            .then(dbUserData => res.json({ message: "User has been created succesfully", dbUserData}))
             .catch(err => res.status(500).json(err));
     },
 
@@ -60,7 +60,7 @@ module.exports = {
                     return;
                 }
                 //returns the updated user
-                res.json(dbUserData);
+                res.json({ message: 'User has been successfully updated' , dbUserData});
             })
             .catch(err => res.status(500).json(err));
     },
@@ -96,7 +96,7 @@ module.exports = {
                     return;
                 }
                 //returns the updated user
-                res.json(dbUserData);
+                res.json({ message: "A friend has been added :)", dbUserData });
             })
             .catch((err) => res.json(err));
     },
@@ -116,7 +116,7 @@ module.exports = {
                     return;
                 }
                 //returns the updated user
-                res.json(dbUserData);
+                res.json({ message: "A friend has been removed :(", dbUserData });
             })
             .catch((err) => res.json(err));
     }
